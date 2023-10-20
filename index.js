@@ -10,8 +10,8 @@ class Svg {
 
   render() {
     return `<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="300" height="200">
-        <g>${this.shapeElement}</g>
-        <g>${this.textElement}</g>
+       ${this.shapeElement}
+       ${this.textElement}
     </svg>`;
   }
 
@@ -63,7 +63,7 @@ function writeToFile(fileName, data) {
 async function init() {
   console.log('Starting init');
 
-  const svg_file = 'logo.svg';
+  const svg_file = './examples/logo.svg';
 
   const answers = await inquirer.prompt(questions);
 
@@ -75,13 +75,13 @@ async function init() {
   let user_shape;
 
   if (user_shape_type === 'Square') {
-    user_shape = new Square();
+    user_shape = new Square(user_shape_color);
     console.log('User selected Square shape');
   } else if (user_shape_type === 'Circle') {
-    user_shape = new Circle();
+    user_shape = new Circle(user_shape_color);
     console.log('User selected Circle shape');
   } else if (user_shape_type === 'Triangle') {
-    user_shape = new Triangle();
+    user_shape = new Triangle(user_shape_color);
     console.log('User selected Triangle shape');
   } else {
     console.log('Invalid shape!');
